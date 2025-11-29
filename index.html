@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finca RP | Donaciones Premium</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="components/navbar.js"></script>
+    <script src="components/header.js"></script>
+    <script src="components/particles.js"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-pink-50 to-green-50 font-exo text-gray-800 min-h-screen">
+    <!-- Floating Particles Background -->
+    <custom-particles></custom-particles>
+
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 py-8 relative z-10">
+        <!-- Header -->
+        <custom-header></custom-header>
+        
+        <!-- Navigation -->
+        <custom-navbar></custom-navbar>
+
+        <!-- Content Section -->
+        <div class="mt-12">
+            <!-- Car Section -->
+            <section id="cars" class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-500">
+                    <i data-feather="car" class="inline mr-2"></i>Vehículos
+                </h2>
+                
+                <!-- Category Filter -->
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <button data-category="all" class="filter-btn active px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-medium shadow-lg shadow-cyan-500/20">Todos</button>
+                    <button data-category="sedanes" class="filter-btn px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 font-medium hover:shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-300 transition-all">Sedanes</button>
+                    <button data-category="suvs" class="filter-btn px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 font-medium hover:shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-300 transition-all">SUVs</button>
+                    <button data-category="pickup" class="filter-btn px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 font-medium hover:shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-300 transition-all">Pick Up</button>
+                    <button data-category="deportivos" class="filter-btn px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 font-medium hover:shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-300 transition-all">Deportivos</button>
+                    <button data-category="superdeportivos" class="filter-btn px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 font-medium hover:shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-300 transition-all">Super Deportivos</button>
+                    <button data-category="motos" class="filter-btn px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 font-medium hover:shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-300 transition-all">Motos</button>
+                </div>
+                
+                <!-- Car Grid -->
+                <div id="car-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Cars will be loaded here dynamically from JSON -->
+                </div>
+            </section>
+
+            <!-- Houses Section -->
+            <section id="houses" class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">
+                    <i data-feather="home" class="inline mr-2"></i>Propiedades
+                </h2>
+                
+                <!-- House Grid -->
+                <div id="house-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Houses will be loaded here dynamically from JSON -->
+                </div>
+            </section>
+
+            <!-- Businesses Section -->
+            <section id="businesses" class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-cyan-500">
+                    <i data-feather="briefcase" class="inline mr-2"></i>Negocios
+                </h2>
+                
+                <!-- Business Grid -->
+                <div id="business-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Businesses will be loaded here dynamically from JSON -->
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full shadow-xl hidden">
+        <span id="toast-message">¡Copiado!</span>
+    </div>
+
+    <script src="script.js"></script>
+    <script>feather.replace();</script>
+</body>
+</html>

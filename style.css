@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&display=swap');
+
+:root {
+    --neon-cyan: #06b6d4;
+    --neon-purple: #a855f7;
+    --neon-pink: #ec4899;
+    --neon-lime: #84cc16;
+    --glow: 0 0 15px;
+}
+
+body {
+    font-family: 'Exo 2', sans-serif;
+    background: linear-gradient(135deg, #f0f4ff, #fef3f9, #f0fdf4);
+    min-height: 100vh;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 2px;
+    background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.card:hover::before {
+    opacity: 1;
+    animation: borderGlow 10s infinite alternate;
+}
+
+@keyframes borderGlow {
+    0% {
+        background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
+    }
+    100% {
+        background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
+    }
+}
+
+.card-img-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.card-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .card-dots {
+    opacity: 1;
+}
+
+.card-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.card-dot.active {
+    background: var(--neon-cyan);
+    transform: scale(1.2);
+    box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.copy-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+}
+
+.copy-btn:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.6);
+}
+
+.price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.badge-premium {
+    background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
+    color: white;
+}
+
+.badge-luxury {
+    background: linear-gradient(45deg, #f59e0b, #ef4444);
+    color: white;
+}
+
+.badge-exclusive {
+    background: linear-gradient(45deg, var(--neon-lime), var(--neon-cyan));
+    color: white;
+}
+
+@keyframes toastIn {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes toastOut {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+}
+
+.toast-show {
+    animation: toastIn 0.3s ease forwards;
+}
+
+.toast-hide {
+    animation: toastOut 0.3s ease forwards;
+}
+
+/* Grid overlay effect */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.1;
+}
